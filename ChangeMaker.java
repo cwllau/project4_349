@@ -5,12 +5,15 @@ public class ChangeMaker
         int k = d.length;
         int [] C = new int[n+1];
         int [] a = new int[n+1];
+        int [] b = new int[n+1];
+        int temp;
+
         //j is the amount of money
         //j loops from 1 - n, C[j]
         for (int j = 1; j <= n; j++)
         {
-            int min = -1;
-            int index = -1;
+            int min = Integer.MAX_VALUE;
+            int index = Integer.MAX_VALUE;
             for (int i = 0; i < k; i++)
             {
                 if (j - d[i] >= 0)
@@ -25,9 +28,18 @@ public class ChangeMaker
             }
             //amt of coins
             C[j] = min + 1;
+            //largest coin value in d array using
             a[j] = index; //i value of min
+            //filling B
+            for (int w = 0; w <= C[j]; w++)
+            {
+                b[j] = d[a[j]];
+                System.out.println("b[" + j + "]: " + b[j]);
+            }
+            //System.out.println("b[j]: " + b[j]);
+
         }
-        return C;
+        return a;
     }
 
     public static int min(int[] num)
@@ -42,6 +54,7 @@ public class ChangeMaker
         }
         return min;
     }
+
 
     public static void main(String[] args)
     {
@@ -58,6 +71,8 @@ public class ChangeMaker
         {
             System.out.println("i: " + i + " change: " + change[i]);
         }
+
+
 
     }
 
